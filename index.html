@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts_List_Genita</title>
+</head>
+<body>
+<input type="text" id="continput" placeholder="Enter name">
+<button onclick="addcont()">Add</button>
+<button onclick="remcont()">Remove</button>
+<ul id="contlist"></ul>
+<script>
+var cont = []; 
+function addcont() {
+var int = document.getElementById("continput");
+var name = int.value.trim(); 
+if (name !== "") {
+if (cont.length >= 7) {
+cont.shift(); 
+}
+cont.push(name); 
+discont();
+int.value = ""; 
+}
+}
+function remcont() {
+if (cont.length > 0) {
+    cont.pop(); 
+    discont();
+}
+}
+function discont() {
+var list = document.getElementById("contlist");
+list.innerHTML = ""; 
+for (var a = 0; a < cont.length; a++) {
+    var listitem = document.createElement("li");
+    listitem.textContent = cont[a];
+    list.appendChild(listitem);
+}
+}
+</script>
+</body>
+</html>
